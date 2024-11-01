@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GODA - ShowDoCode</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #1c1c1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #6a0dad;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffd700;
+            animation: slide-in 2s ease-out;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 204, 0, 0.5);
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding: 50px;
+        }
+
+        .profile-pic {
+            flex: 1;
+            padding-right: 50px;
+            animation: zoom-in 2s ease-out;
+        }
+
+        .profile-pic img {
+            width: 300px;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 0px 30px rgba(255, 215, 0, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic img:hover {
+            transform: scale(1.1);
+        }
+
+        .bio {
+            flex: 2;
+            padding-left: 50px;
+            border-left: 2px solid #ffd700;
+            animation: slide-right 2s ease-out;
+        }
+
+        .bio h2 {
+            font-size: 36px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .bio p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .projects-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+            padding: 0 50px;
+        }
+
+        .project {
+            position: relative;
+            margin: 20px;
+            width: 300px;
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .project:hover img {
+            transform: scale(1.05);
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 40px;
+        }
+
+        .project {
+            position: relative;
+            background-color: #262626;
+            padding: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 1s;
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 6px;
+            transition: transform 1s;
+        }
+
+        i {
+            color: #45077fe6;
+            font-size: 30px;
+
+        }
+
+        .layer {
+            width: 100%;
+            height: 0%;
+            border-radius: 12px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), #9e0bf3ad);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 15px;
+            transition: height 1s;
+        }
+
+        .layer h3 {
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #ffd700;
+        }
+
+        .layer p {
+            font-weight: 400;
+        }
+
+        .layer a {
+            margin-top: 30px;
+            color: #262626;
+            text-decoration: underline;
+            font-size: 18px;
+            line-height: 60px;
+            background-color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .project:hover .layer {
+            height: 100%;
+        }
+
+        section {
+            padding: 50px 0px;
+        }
+
+        .timeline {
+            border-left: 4px solid #ffd700;
+            padding-left: 20px;
+            position: relative;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .timeline .event {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline .event::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #ffd700;
+            border-radius: 50%;
+            position: absolute;
+            left: -30px;
+            top: 5px;
+        }
+
+        .timeline h3 {
+            margin: 0;
+            color: #ffd700;
+        }
+
+        .timeline p {
+            margin: 0;
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            animation: fade-in-footer 3s ease-in;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        form label,
+        form input,
+        form textarea,
+        form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        form input,
+        form textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #222;
+            color: white;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #ffd700;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            background-color: #ffcc00;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-right {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoom-in {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in-footer {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .bio,
+            .profile-pic {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>جوده - GODA</h1>
+        <nav>
+            <a href="#about">عن جوده</a>
+            <a href="#projects">المشاريع</a>
+            <a href="#timeline">السيرة الذاتية</a>
+            <a href="#contact">اتصل بي</a>
+        </nav>
+    </header>
+
+    <section class="container" id="about">
+        <div class="profile-pic">
+            <img src="myphoto.webp" alt="صورة جوده">
+        </div>
+        <div class="bio">
+            <h2>عن جوده</h2>
+            <p>اهلا انا جوده نصرالله طالب في مدرسة وي المنصورة وده موقعي الشخصي</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <u>
+            <h2 style="text-align: center;">الانجازات</h2>
+        </u>
+        <div class="projects-gallery">
+            <div class="project">
+                <img src="food lover.png" alt="مشروع 1">
+                <div class="layer">
+                    <h3>Food lover</h3>
+                    <p>موقع مطعم قمت ببرمجته وتصميم</p>
+                    <i class="fa-regular fa-share-from-square share"
+                        onclick="window.open('https://goudawolfdev.github.io/Gouda_Foods/', '_blank')">عرض</i>
+                </div>
+            </div>
+            <div class="project">
+                <img src="linux.jpeg" alt="مشروع 2">
+                <div class="layer">
+                    <h3>شهادة في اللينكس</h3>
+                    <p>حصلت على شهادة في اللينكس من tryhackme</p>
+                </div>
+            </div>
+        </div>
+    
+        <br><br>
+        <h2 style="text-align: center;">الشعارات</h2>
+        <div class="logos-gallery" style="display: flex; justify-content: center; flex-wrap: wrap; animation: fade-in 1s ease;">
+            <div class="logo" style="margin: 10px; opacity: 0; animation: slide-in 0.5s forwards;">
+                <img src="logo1.png" alt="لوجو" class="hover-effect" style="width: 150px; height: auto; border-radius: 10px;">
+            </div>
+            <div class="logo" style="margin: 10px; opacity: 0; animation: slide-in 0.5s forwards; animation-delay: 0.3s;">
+                <img src="mylogo2.jpeg" alt="لوجو" class="hover-effect" style="width: 150px; height: auto; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        @keyframes slide-in {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    
+        .hover-effect {
+            transition: transform 0.3s ease;
+        }
+    
+        .hover-effect:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    
+
+    <section id="timeline">
+        <h2 style="text-align: center;">السيرة الذاتية</h2>
+        <div class="timeline">
+            <div class="event">
+                <h3>2008</h3>
+                <p>ولدت في مصر الشرقية فاقوس</p>
+            </div>
+            <div class="event">
+                <h3>2023</h3>
+                <p>بدأت دراسة في مدرسة وي المنصورة</p>
+            </div>
+            <div class="event">
+                <h3>2024</h3>
+                <p>دخلت قسم تطوير مواقع وبرمجيات</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 style="text-align: center;">اتصل بي</h2>
+        <form>
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">رسالتك:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">إرسال</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 جوده. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+
+</html>
